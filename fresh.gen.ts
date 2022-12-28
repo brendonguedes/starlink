@@ -9,10 +9,15 @@ import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/_middleware.ts";
 import * as $3 from "./routes/index.tsx";
 import * as $$0 from "./islands/LiveControls.tsx";
-import * as $$$0 from "./sections/GetStarted.tsx";
-import * as $$$1 from "./sections/Head.tsx";
-import * as $$$2 from "./sections/Markdown.tsx";
-import * as $$$3 from "./sections/QuillText.tsx";
+import * as $$$0 from "./sections/Banner.tsx";
+import * as $$$1 from "./sections/GetStarted.tsx";
+import * as $$$2 from "./sections/Head.tsx";
+import * as $$$3 from "./sections/Header.tsx";
+import * as $$$4 from "./sections/ImageWithText.tsx";
+import * as $$$5 from "./sections/Markdown.tsx";
+import * as $$$6 from "./sections/QuickText.tsx";
+import * as $$$7 from "./sections/QuillText.tsx";
+import * as $$$8 from "./sections/SectionTitle.tsx";
 import * as $$$$0 from "./functions/LoadGitHubRaw.ts";
 
 const manifest: DecoManifest = {
@@ -24,13 +29,56 @@ const manifest: DecoManifest = {
   },
   islands: { "./islands/LiveControls.tsx": $$0 },
   sections: {
-    "./sections/GetStarted.tsx": $$$0,
-    "./sections/Head.tsx": $$$1,
-    "./sections/Markdown.tsx": $$$2,
-    "./sections/QuillText.tsx": $$$3,
+    "./sections/Banner.tsx": $$$0,
+    "./sections/GetStarted.tsx": $$$1,
+    "./sections/Head.tsx": $$$2,
+    "./sections/Header.tsx": $$$3,
+    "./sections/ImageWithText.tsx": $$$4,
+    "./sections/Markdown.tsx": $$$5,
+    "./sections/QuickText.tsx": $$$6,
+    "./sections/QuillText.tsx": $$$7,
+    "./sections/SectionTitle.tsx": $$$8,
   },
   functions: { "./functions/LoadGitHubRaw.ts": $$$$0 },
   schemas: {
+    "./sections/Banner.tsx": {
+      "inputSchema": {
+        "title": " Banner",
+        "type": "object",
+        "properties": {
+          "image": {
+            "format": "image-uri",
+            "type": "string",
+            "title": "Image",
+          },
+          "imageMobile": {
+            "format": "image-uri",
+            "type": "string",
+            "title": "Image Mobile",
+          },
+          "altText": {
+            "type": "string",
+            "title": "Alt Text",
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
+          "subTitle": {
+            "type": "string",
+            "title": "Sub Title",
+          },
+        },
+        "required": [
+          "image",
+          "imageMobile",
+          "altText",
+          "title",
+          "subTitle",
+        ],
+      },
+      "outputSchema": null,
+    },
     "./sections/GetStarted.tsx": {
       "inputSchema": {
         "title": " Get Started",
@@ -97,6 +145,107 @@ const manifest: DecoManifest = {
       },
       "outputSchema": null,
     },
+    "./sections/Header.tsx": {
+      "inputSchema": {
+        "title": " Header",
+        "type": "object",
+        "properties": {
+          "menu": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "title": "Text",
+                },
+                "link": {
+                  "type": [
+                    "string",
+                    "null",
+                  ],
+                  "title": "Link",
+                },
+                "submenus": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "type": [
+                          "string",
+                          "null",
+                        ],
+                        "title": "Text",
+                      },
+                      "link": {
+                        "type": [
+                          "string",
+                          "null",
+                        ],
+                        "title": "Link",
+                      },
+                    },
+                    "required": [],
+                  },
+                  "title": "Submenus",
+                },
+              },
+              "required": [
+                "text",
+                "submenus",
+              ],
+            },
+            "title": "Menu",
+          },
+        },
+        "required": [
+          "menu",
+        ],
+      },
+      "outputSchema": null,
+    },
+    "./sections/ImageWithText.tsx": {
+      "inputSchema": {
+        "title": " Image With Text",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+          },
+          "imagePosition": {
+            "type": [
+              "string",
+              "null",
+            ],
+            "title": "Image Position",
+          },
+          "image": {
+            "format": "image-uri",
+            "type": "string",
+            "title": "Image",
+          },
+          "backgroundAtImage": {
+            "type": [
+              "boolean",
+              "null",
+            ],
+            "title": "Background At Image",
+          },
+        },
+        "required": [
+          "title",
+          "text",
+          "image",
+        ],
+      },
+      "outputSchema": null,
+    },
     "./sections/Markdown.tsx": {
       "inputSchema": {
         "title": " Markdown",
@@ -115,6 +264,27 @@ const manifest: DecoManifest = {
       },
       "outputSchema": null,
     },
+    "./sections/QuickText.tsx": {
+      "inputSchema": {
+        "title": " Quick Text",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
+          "subTitle": {
+            "type": "string",
+            "title": "Sub Title",
+          },
+        },
+        "required": [
+          "title",
+          "subTitle",
+        ],
+      },
+      "outputSchema": null,
+    },
     "./sections/QuillText.tsx": {
       "inputSchema": {
         "title": " Quill Text",
@@ -128,6 +298,27 @@ const manifest: DecoManifest = {
         },
         "required": [
           "html",
+        ],
+      },
+      "outputSchema": null,
+    },
+    "./sections/SectionTitle.tsx": {
+      "inputSchema": {
+        "title": " Section Title",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
+          "subTitle": {
+            "type": "string",
+            "title": "Sub Title",
+          },
+        },
+        "required": [
+          "title",
+          "subTitle",
         ],
       },
       "outputSchema": null,

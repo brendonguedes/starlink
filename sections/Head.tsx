@@ -11,13 +11,13 @@ export interface Props {
 }
 
 export default function HeadComponent({
-  title = "deco.cx — starter site",
-  description = "Deliver complete commerce experiences — start here!",
-  url = "https://start.deco.site",
-  imageUrl = "https://deco.cx/images/deco-logo-light.png",
-  faviconUrl = "",
+  title = "Starlink - deco.cx",
+  description = "Como a Starlink funciona",
+  url = "https://starlink.deco.site/",
+  imageUrl = "https://www.starlink.com/assets/images/social/share.jpg",
+  faviconUrl = "https://www.starlink.com/assets/images/social/share.jpg",
   styleUrls = [],
-  themeColor = "#003232",
+  themeColor = "#000",
 }: Props) {
   return (
     <Head>
